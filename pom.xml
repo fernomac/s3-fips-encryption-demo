@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.coronet</groupId>
+    <artifactId>s3-fips-encryption-demo</artifactId>
+    <version>0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.10</maven.compiler.source>
+        <maven.compiler.target>1.10</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!--
+          Install https://github.com/fernomac/aws-sdk-java/tree/fips-secure-random locally.
+          TODO: Update to a real version once merged/released.
+        -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.11.367-SNAPSHOT</version>
+        </dependency>
+
+        <!--
+          Download bc-fips-1.0.1.jar from https://www.bouncycastle.org/fips-java/ and manually
+          install it in the local maven repository with these coordinates. It's not available
+          via "normal" maven.
+        -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bc-fips</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!--
+          Both the AWS SDK and S3Mock depend on Jackson, and Maven's version resolution
+          is a mess, so we have to specify it explicitly to make sure we get the newer
+          version that S3Mock expects.
+        -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.testing</groupId>
+            <artifactId>s3mock-junit4</artifactId>
+            <version>2.0.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
