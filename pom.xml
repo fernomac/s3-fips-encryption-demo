@@ -14,14 +14,10 @@
     </properties>
 
     <dependencies>
-        <!--
-          Install https://github.com/fernomac/aws-sdk-java/tree/fips-secure-random locally.
-          TODO: Update to a real version once merged/released.
-        -->
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.367-SNAPSHOT</version>
+            <version>1.11.380</version>
         </dependency>
 
         <!--
